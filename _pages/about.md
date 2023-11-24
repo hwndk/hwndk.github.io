@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Educational BG, Skills, etc.
+subtitle: <a href='#'>Self-introduction</a>. Educational BG, Skills, etc.
 
 profile:
   align: right
