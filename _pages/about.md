@@ -9,8 +9,7 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>SKKU Software<br></p>
-    <p>github: hwndk<br></p>
+    <p>Major: Sungkyunkwan software<br></p>
     <p>Seoul, Korea.</p>
 
 news: false  # includes a list of news items
