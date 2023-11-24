@@ -1,37 +1,37 @@
-name: deploy
+name: deploy #name of workflow
 
 on:
-  push:
+  push: #branch to push
     branches:
       - master
       - main
-  pull_request:
+  pull_request: #branch to pull request
     branches:
       - master
       - main
   workflow_dispatch:
 
-permissions:
+permissions: #function the workflow can do
   contents: write
 
-jobs:
+jobs: #main func of workflow
   deploy:
     # available images: https://github.com/actions/runner-images#available-images
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #the destination machine
     steps:
-    - name: Checkout 🛎️
+    - name: Checkout 🛎️#check the workflow
       uses: actions/checkout@v3
-    - name: Setup Ruby
+    - name: Setup Ruby #set up ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2.2'
         bundler-cache: true
-    - name: Update _config.yml ⚙️
+    - name: Update _config.yml ⚙️ #check _config.yml, and update its contents
       uses: fjogeleit/yaml-update-action@v0.13.1
       with:
         commitChange: false
         valueFile: '_config.yml'
-        propertyPath: 'giscus.repo'
+        propertyPath: 'giscus.repo' #call the contents in yml file.
         value: ${{ github.repository }}
     - name: Install and Build 🔧
       run: |
@@ -42,7 +42,7 @@ jobs:
         bundle exec jekyll build --lsi
         purgecss -c purgecss.config.js
     - name: Deploy 🚀
-      if: github.event_name != 'pull_request'
+      if: github.event_name != 'pull_request' #Unless its name is pull_request, then deploy it.
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: _site
